@@ -3,6 +3,7 @@ import sys
 import hashlib
 import random
 
+import entity
 from entity import Location
 from entity import Goose
 
@@ -25,3 +26,10 @@ class Clan:
 
     def getLenght(self):
         return len(self.geese)
+
+
+def generateRandomClan(_count):
+    _geesearray = []
+    for count in range(_count+1):
+        _geesearray.append(entity.generateRandomGoose())
+    return _geesearray

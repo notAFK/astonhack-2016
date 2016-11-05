@@ -1,22 +1,9 @@
 import clan
 import entity
 
-jimmy = entity.Goose('Jimmy', 0, 8000, 100, 100, entity.Location(0, 0), 'male')
-print jimmy
-print jimmy.health, jimmy.lifespan
+lotsofgeese = clan.Clan(clan.generateRandomClan(10))
 
-for i in range(1000):
-    jimmy.decayLifespan()
-
-print jimmy.health, jimmy.lifespan
-jimmy.health -= 50
-print jimmy.health
-
-for i in range(1000):
-    jimmy.decayLifespan()
-
-print jimmy.health, jimmy.lifespan
-
+print lotsofgeese
 
 print 'DONE'
 assert True
