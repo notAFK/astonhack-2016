@@ -24,12 +24,20 @@ class Clan:
 
         return _string
 
-    def getLenght(self):
+    def __len__(self):
         return len(self.geese)
+
+    def __getitem__(self, index):
+        return self.geese[index]
+
+    def getAll(self):
+        for goose in self.geese:
+            goose.getAll()
+            print
 
 
 def generateRandomClan(_count):
     _geesearray = []
-    for count in range(_count+1):
+    for count in range(_count):
         _geesearray.append(entity.generateRandomGoose())
     return _geesearray

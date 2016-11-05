@@ -26,6 +26,8 @@ class Location:
 class Goose:
     __doc__ = ''' Class that stores the goose essentials. '''
 
+    __GENDER = {0: 'female', 1: 'male', 2: 'apache attack helicopter'}
+
     def __init__(self, _name, _age, _lifespan,
                  _health, _hunger, _location, _gender):
 
@@ -54,7 +56,10 @@ class Goose:
 
     def getAll(self):
         for key, value in self.__dict__.items():
-            print key, ':', value
+            if key != 'gender':
+                print key, ':', value
+            else:
+                print key, ':', Goose.__GENDER[value]
 
 
 def generateRandomGoose():
@@ -63,7 +68,7 @@ def generateRandomGoose():
     _hunger = random.randrange(80.0, 100.0 + 1.0)
     _health = random.randrange(90.0, 100.0 + 1.0)
     _location = Location(0, 0)
-    _gender = 'male' if random.randrange(0, 2) == 0 else 'female'
+    _gender = random.randrange(0, 1 + 1)
     _age = random.randrange(0, 4 + 1)
 
     return Goose(_name, _age, _lifespan, _health, _hunger, _location, _gender)
