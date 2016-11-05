@@ -23,16 +23,16 @@ WELCOMEMSG = '''
 '''
 
 
-def createClan(size):
+def createClan(size, x, y):
     print 'Use random data? (y/n)'
     if str(raw_input('---> ')) == 'y':
-        geesearray = clan.generateRandomClan(size)
+        geesearray = clan.generateRandomClan(size, x, y)
         print 'Finished generating clan.'
         return clan.Clan(geesearray)
     else:
         geesearray = []
         for gooseCount in range(size):
-            geesearray.append(harvestGoose())
+            geesearray.append(createClanGoose(x, y))
         print 'Finished generating clan.'
         return clan.Clan(geesearray)
 
@@ -47,13 +47,17 @@ def createGeese(count):
         print 'Finished generating ' + count + ' geese.'
     else:
         for gooseCount in range(count):
-            geesearray.append(harvestGoose())
+            geesearray.append(createGoose())
         return geesearray
         print 'Finished generating ' + count + ' geese.'
 
 
 def createGoose():
     return entity.Goose(str(raw_input('name ---> ')), int(raw_input('age (d) ---> ')), int(raw_input('span (d) ---> ')), int(raw_input('health ---> ')), int(raw_input('hunger ---> ')), entity.Location(int(raw_input('X: ')), int(raw_input('Y: '))), int(raw_input('gender ---> ')))
+
+
+def createClanGoose(x, y):
+    return entity.Goose(str(raw_input('name ---> ')), int(raw_input('age (d) ---> ')), int(raw_input('span (d) ---> ')), int(raw_input('health ---> ')), int(raw_input('hunger ---> ')), entity.Location(x, y), int(raw_input('gender ---> ')))
 
 
 def exit():
@@ -81,25 +85,3 @@ if __name__ == '__main__':
     print WELCOMEMSG
     while(True):
         exec(str(raw_input('>_ ')))
-
-
-'''
-if __name__ == '__main__':
-    print WELCOMEMSG
-
-    print 'Select one option:'
-    print '1) Generate individual geese.'
-    print '2) Generate geese clan.'
-    print '3) Exit program.'
-    INPUT = int(raw_input('---> '))
-    if INPUT == 1:
-        createGeese(int(raw_input('count ---> ')))
-    elif INPUT == 2:
-        createClan(int(raw_input('size ---> ')))
-    elif INPUT == 3:
-        print 'The geese will find you!'
-        sys.exit()
-    else:
-        print '*quack*'
-        sys.exit()
-'''
