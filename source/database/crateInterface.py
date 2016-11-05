@@ -13,14 +13,18 @@ class Database:
         cursor = connection.cursor()
         cursor.execute("""
         CREATE TABLE geese(
-            ID INT PRIMARY KEY,
-            HASHID VARCHAR(8),
-            LIFESPAN FLOAT(8),
-            AGE INT,
-            HUNGER FLOAT(8),
-            LOCATION_X FLOAT(16),
-            LOCATION_Y FLOAT(16),
-            HEALTH INT
+            ID int PRIMARY KEY,
+            HASHID string,
+            LIFESPAN float,
+            AGE int,
+            HUNGER float,
+            LOCATION_X float,
+            LOCATION_Y float,
+	    IS_ALIVE boolean,
+	    RANGE float,
+	    MIGRATION int,
+            HEALTH int,
+   	    GENDER int
         );
         """)
 
@@ -28,12 +32,38 @@ class Database:
     Save function for geese table
     Accesses crate on ip provided and saves _geeseArray in it
     '''
-    def Save(self, _geeseArray):
+    def Save(self, geeseArray):
         connection = client.connect(crateServer)
         cursor = connection.cursor()
-        cursor.execute("""
-        #TODO
-        """);
+        for bird in geeseArray:
+	    if bird.saved:
+		cursor.execute("""
+	        UPDATE geese
+		SET HASHID = '""" + bird.hashid + """
+		' , LIFESPAN = """ + bird.lifespan + """ 
+		, AGE = """ +bird.age + """
+		, HUNGER = """ + bird.hunger + """
+		, LOCATION_X = """ + bird.location.x + """
+		, LOCATION_Y = """ + bird.location.y + """
+                , IS_ALIVE = """ + goose.is + """
+		, HEALTH = """ + goose.health + """
+		, GENDER = """ + goose.gender + """
+		WHERE ID = """ + goose.id);
+	    else:
+		cursor.execute("""
+	        INSERT INTO geese (ID, HASHID, LIFESPAN, AGE, HUNGER""" + """
+		, LOCATION_X, LOCATION_Y, HEALTH, GENDER)""" + """ 
+		VALUES( """ + goose.id + ", '" + goose.lifespan + "', " +
+		
+		SET HASHID = '""" + goose.hashid + """
+		' , LIFESPAN = """ + goose.lifespan + """ 
+		, AGE = """ + goose.age + """
+		, HUNGER = """ + goose.hunger + """
+		, LOCATION_X = """ + goose.location.x + """
+		, LOCATION_Y = """ + goose.location.y + """
+		, HEALTH = """ + goose.health + """
+		, GENDER = """ + goose.gender + """
+		WHERE ID = """ + goose.id); 
 
     '''
     Load function for geese table
