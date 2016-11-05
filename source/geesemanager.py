@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import goose
+import goose.entity
 import sys
 import os
 
@@ -18,71 +18,35 @@ WELCOMEMSG = '''
  |_____/|_____|_|  |_|\____/|______/_/    \_\_|  \____/|_|  \_\\
 '''
 
-INPUT = 'null'
 
-
-def makeGoose():
+def createClan(size):
     pass
 
 
-def makeClan():
+def createGoose():
     pass
 
 
-def harvestGooseData():
-    name = str(raw_input('name ---> '))
-    age = int(raw_input('age (days) ---> '))
-    lifespan = int(raw_input('lifespan (days) ---> '))
-    health = int(raw_input('health ---> '))
-    hunger = int(raw_input('hunger ---> '))
-    print '0) Female'
-    print '1) Male'
-    print '2) Apache attack helicopter'
-    gender = int(raw_input('gender --->'))
-    location = raw_input('location (x,y) ---> ').split(',')
-    return [name, age, lifespan, health, hunger, gender, location]
+def harvestClan(size):
+    pass
 
 
-def getSelection():
-    print 'Select one of the options:'
-    print '1) Generate one goose.'
-    print '2) Generate multiple geese.'
-    print '3) Exit.'
-    INPUT = int(raw_input('---> '))
-    if INPUT == 1:
-        print 'Select one of the options:'
-        print '1) Generate a random goose.'
-        print '2) Generate a goose with custom data.'
-        INPUT = int(raw_input('---> '))
-        if INPUT == 1:
-            pass  # MAKE ONE RANDOM GOOSE AND STORE IT ...
-        elif INPUT == 2:
-            print harvestGooseData()
-    elif INPUT == 2:
-        print 'How many?'
-        INPUT = int(raw_input('---> '))
-        if not type(INPUT) is int:
-            print '*quack*'
-            sys.exit()
-        else:
-            print 'Do you want random geese? (yes/no)'
-            INPUT = str(raw_input('---> '))
-            if INPUT == 'yes':
-                pass  # DO YES STUFF
-            elif INPUT == 'no':
-                pass  # DO NO STUFF
-            else:
-                print '*quack*'
-                sys.exit()
-    elif INPUT == 3:
-        print 'The geese will find you!'
-        sys.exit()
-    else:
-        print '*quack*'
-        getSelection()
+def harvestGoose():
+    return goose.entity.Goose(str(raw_input('name ---> ')), int(raw_input('age (d) ---> ')), int(raw_input('span (d) ---> ')), int(raw_input('health ---> ')), int(raw_input('hunger ---> ')), goose.entity.Location(int(raw_input('X: ')), int(raw_input('Y: '))), int(raw_input('gender ---> ')))
 
 
 if __name__ == '__main__':
-    print WELCOMEMSG
 
-    getSelection()
+    print 'Select one option:'
+    print '1) Generate individual geese.'
+    print '2) Generate geese clan.'
+    print '3) Exit program.'
+    INPUT = int(raw_input('---> '))
+    if INPUT == 1:
+        pass
+    elif INPUT == 2:
+        pass
+    elif INPUT == 3:
+        pass
+    else:
+        pass
