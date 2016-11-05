@@ -21,7 +21,7 @@
 #bootstrap.mlockall: true
 
 # Name of the Node, e.g. '$(hostname -s)'
-#node.name: "Piz Buin"
+node.name: "Geese-Hunt"
 
 # Crate can utilize multiple volumes in parallel,
 # make sure to set the owner to 'crate:crate'
@@ -58,7 +58,7 @@
 # Cluster name identifies your cluster for auto-discovery. If you're running
 # multiple clusters on the same network, make sure you're using unique names.
 #
-#cluster.name: crate
+cluster.name: "Geese-Crate"
 
 # The graceful_stop namespace defines settings for a graceful stop
 # procedure of nodes within the cluster.
