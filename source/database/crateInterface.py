@@ -28,7 +28,7 @@ class Database:
     Save function for geese table
     Accesses crate on ip provided and saves _geeseArray in it
     '''
-    def Save(crateServer = "10.79.0.230:4200", ta, _geeseArray):
+    def Save(_geeseArray):
         connection = client.connect(crateServer)
         cursor = connection.cursor()
         cursor.execute("""
@@ -39,7 +39,7 @@ class Database:
     Load function for geese table
     Accesses crate on ip provided and loads it into _geeseArray
     '''
-    def Load(crateServer = "10.79.0.230:4200", ta, _geeseArray):
+    def Load(_geeseArray):
         connection = client.connect(crateServer)
         cursor = connection.cursor()
         cursor.execute("""
