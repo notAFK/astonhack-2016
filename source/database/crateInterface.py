@@ -8,7 +8,7 @@ class Database:
     '''
     Create database to store geese
     '''
-    def Create():
+    def Create(self):
         connection = client.connect(crateServer)
         cursor = connection.cursor()
         cursor.execute("""
@@ -28,7 +28,7 @@ class Database:
     Save function for geese table
     Accesses crate on ip provided and saves _geeseArray in it
     '''
-    def Save(_geeseArray):
+    def Save(self, _geeseArray):
         connection = client.connect(crateServer)
         cursor = connection.cursor()
         cursor.execute("""
@@ -39,7 +39,7 @@ class Database:
     Load function for geese table
     Accesses crate on ip provided and loads it into _geeseArray
     '''
-    def Load(_geeseArray):
+    def Load(self, _geeseArray):
         connection = client.connect(crateServer)
         cursor = connection.cursor()
         cursor.execute("""
