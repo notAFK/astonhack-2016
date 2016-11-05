@@ -49,6 +49,7 @@ class Goose:
         self.isAlive = True
         self.range = _range
         self.migrateCounter = 0
+        self.saved = False
 
     def __str__(self):
         return self.hashid
@@ -66,7 +67,7 @@ class Goose:
 
     def migrate(self, location):
         distance = math.sqrt((self.x - location.x)**2 + (self.y - location.y)**2)
-        self.migrateCounter = distance/self.range
+        self.migrateCounter = int(distance/self.range)
         if migrateCounter == 0:
             move(location)
 

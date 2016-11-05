@@ -53,11 +53,11 @@ def createGeese(count):
 
 
 def createGoose():
-    return entity.Goose(str(raw_input('name ---> ')), int(raw_input('age (d) ---> ')), int(raw_input('span (d) ---> ')), int(raw_input('health ---> ')), int(raw_input('hunger ---> ')), entity.Location(int(raw_input('X: ')), int(raw_input('Y: '))), int(raw_input('gender ---> ')), int(raw_input('range ---> ')))
+    return entity.Goose(str(raw_input('name ---> ')), float(raw_input('age (d) ---> ')), float(raw_input('span (d) ---> ')), float(raw_input('health ---> ')), float(raw_input('hunger ---> ')), entity.Location(float(raw_input('X: ')), float(raw_input('Y: '))), int(raw_input('gender ---> ')), float(raw_input('range ---> ')))
 
 
 def createClanGoose(x, y):
-    return entity.Goose(str(raw_input('name ---> ')), int(raw_input('age (d) ---> ')), int(raw_input('span (d) ---> ')), int(raw_input('health ---> ')), int(raw_input('hunger ---> ')), entity.Location(x, y), int(raw_input('gender ---> ')), int(raw_input('range ---> ')))
+    return entity.Goose(str(raw_input('name ---> ')), float(raw_input('age (d) ---> ')), float(raw_input('span (d) ---> ')), float(raw_input('health ---> ')), float(raw_input('hunger ---> ')), entity.Location(x, y), int(raw_input('gender ---> ')), float(raw_input('range ---> ')))
 
 
 def exit():
