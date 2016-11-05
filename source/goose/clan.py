@@ -48,7 +48,7 @@ class Clan:
         for egg in self.eggs:
             egg.days -= 1
             if egg.days == 0:
-                self.addGoose(Goose('newborn', 0, random.uniform(4000.0, 8000.0), 100.0, 100.0, self.geese[0].location, random.range(0, 2)))
+                self.addGoose(Goose('newborn', 0, random.uniform(4000.0, 8000.0), 100.0, 100.0, self.geese[0].location, random.randrange(0, 2)))
 
 
 def generateRandomClan(_count, x, y):

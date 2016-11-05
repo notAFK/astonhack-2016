@@ -97,9 +97,8 @@ class Goose:
     def mate(self, geeseclan):
         for goose in geeseclan:
             if goose.gender != self.gender:
-                pass
-                # Add eggs to the clan.
-                # Clan can't move until eggs hatch.
+                if goose.age >= 720:
+                    geeseclan.addEggs(random.randrange(2, 10))
 
 
 def generateRandomGoose():
