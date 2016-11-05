@@ -30,19 +30,22 @@ class Goose:
     hunger = 'null'
     location = 'null'
     health = 'null'
+    gender = 'null'
 
-    def __init__(self, _name, _age, _health, _hunger, _location):
+    def __init__(self, _name, _age, _health, _hunger, _location, _gender):
         self.hashid = hashlib.sha256(os.urandom(32)).hexdigest()[0:8]
         self.name = _name
         self.age = _age
         self.hunger = _hunger
         self.health = _health
         self.location = _location
+        self.gender = _gender
 
     def __str__(self):
         _string = self.hashid
         _string += (':' + self.name + '\n')
         _string += ('AGE:' + str(self.age) + ' HUNGER:' + str(self.hunger) + ' HEALTH:' + str(self.health))
         _string += ('\n' + 'X:' + str(self.location.x) + ', Y:' + str(self.location.y))
+        _string += '\n' + 'GENDER:' + self.gender
 
         return _string
