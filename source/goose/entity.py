@@ -31,7 +31,7 @@ class Goose:
     __GENDER = {0: 'female', 1: 'male', 2: 'apache attack helicopter'}
 
     def __init__(self, _name, _age, _lifespan,
-                 _health, _hunger, _location, _gender, _range):
+                 _health, _hunger, _location, _gender, _range=12):
 
         global GLOBALIDCOUNT
         self.id = GLOBALIDCOUNT
@@ -65,16 +65,21 @@ class Goose:
     def die(self):
         self.isAlive = False
 
-    def migrate(self, location):
-        distance = math.sqrt((self.x - location.x)**2 + (self.y - location.y)**2)
-        self.migrateCounter = int(distance/self.range)
-        if migrateCounter == 0:
-            move(location)
+    def migrate(self, x, y):
+        distance = math.sqrt((self.location.x - x)**2 + (self.location.y - y)**2)
+        if self.migrateCounter == 0:
+            self.migrateCounter = int(distance/self.range)
+        if self.migrateCounter == 0:
+            self.move(x, y)
+        if self.migrateCounter > 0:
+            self.migrateCounter -= 1
+            if self.migrateCounter == 0:
+                self.move(x, y)
 
-    def move(self, location):
-        distance = math.sqrt((self.x - location.x)**2 + (self.y - location.y)**2)
+    def move(self, x, y):
+        distance = math.sqrt((self.location.x - x)**2 + (self.location.y - y)**2)
         if distance <= self.range:
-            self.location = location
+            self.location = Location(x, y)
 
     def printAll(self):
         for key, value in self.__dict__.items():
@@ -91,7 +96,7 @@ def generateRandomGoose():
     _health = random.uniform(90.0, 100.0 + 1.0)
     _location = Location().random()
     _gender = random.randrange(0, 1 + 1)
-    _age = random.randrange(0, 4 + 1)
+    _age = random.uniform(30.0, 500.0 + 1.0)
 
     return Goose(_name, _age, _lifespan, _health, _hunger, _location, _gender)
 
