@@ -1,6 +1,8 @@
 #!/usr/bin/python
 
 import goose.entity
+import goose.clan
+
 import sys
 import os
 
@@ -20,15 +22,26 @@ WELCOMEMSG = '''
 
 
 def createClan(size):
-    pass
+    print 'Use random data? (y/n)'
+    if str(raw_input('---> ')) == 'y':
+        geesearray = goose.clan.generateRandomClan(size)
+        print goose.clan.Clan(geesearray)
+    else:
+        geesearray = []
+        for gooseCount in range(size):
+            geesearray.append(harvestGoose())
+        print goose.clan.Clan(geesearray)
 
 
-def createGoose():
-    pass
-
-
-def harvestClan(size):
-    pass
+def createGeese(count):
+    print 'Use random data? (y/n)'
+    if str(raw_input('---> ')) == 'y':
+        for gooseCount in range(count):
+            print goose.entity.generateRandomGoose()
+    else:
+        for gooseCount in range(count):
+            print harvestGoose()
+            print
 
 
 def harvestGoose():
@@ -36,6 +49,7 @@ def harvestGoose():
 
 
 if __name__ == '__main__':
+    print WELCOMEMSG
 
     print 'Select one option:'
     print '1) Generate individual geese.'
@@ -43,10 +57,12 @@ if __name__ == '__main__':
     print '3) Exit program.'
     INPUT = int(raw_input('---> '))
     if INPUT == 1:
-        pass
+        createGeese(int(raw_input('count ---> ')))
     elif INPUT == 2:
-        pass
+        createClan(int(raw_input('size ---> ')))
     elif INPUT == 3:
-        pass
+        print 'The geese will find you!'
+        sys.exit()
     else:
-        pass
+        print '*quack*'
+        sys.exit()

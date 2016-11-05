@@ -16,8 +16,9 @@ class Location:
         self.y = _y
 
     def random(self):
-        self.x = random.randrange(-180.0, 180.0)
-        self.y = random.randrange(-90.0, 90.0)
+        _x = random.uniform(-180.0, 180.0)
+        _y = random.uniform(-90.0, 90.0)
+        return Location(_x, _y)
 
     def __str__(self):
         return str(self.x) + ',' + str(self.y)
@@ -64,10 +65,10 @@ class Goose:
 
 def generateRandomGoose():
     _name = 'goose'
-    _lifespan = random.randrange(4000.0, 8000.0 + 1.0)
-    _hunger = random.randrange(80.0, 100.0 + 1.0)
-    _health = random.randrange(90.0, 100.0 + 1.0)
-    _location = Location(0, 0)
+    _lifespan = random.uniform(4000.0, 8000.0 + 1.0)
+    _hunger = random.uniform(80.0, 100.0 + 1.0)
+    _health = random.uniform(90.0, 100.0 + 1.0)
+    _location = Location().random()
     _gender = random.randrange(0, 1 + 1)
     _age = random.randrange(0, 4 + 1)
 
