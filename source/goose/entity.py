@@ -55,7 +55,7 @@ class Goose:
             _decay += 40.0/self.health
         self.lifespan -= _decay
 
-    def getAll(self):
+    def printAll(self):
         for key, value in self.__dict__.items():
             if key != 'gender':
                 print key, ':', value
@@ -69,6 +69,18 @@ def generateRandomGoose():
     _hunger = random.uniform(80.0, 100.0 + 1.0)
     _health = random.uniform(90.0, 100.0 + 1.0)
     _location = Location().random()
+    _gender = random.randrange(0, 1 + 1)
+    _age = random.randrange(0, 4 + 1)
+
+    return Goose(_name, _age, _lifespan, _health, _hunger, _location, _gender)
+
+
+def generateRandomClanGoose(location):
+    _name = 'goose'
+    _lifespan = random.uniform(4000.0, 8000.0 + 1.0)
+    _hunger = random.uniform(80.0, 100.0 + 1.0)
+    _health = random.uniform(90.0, 100.0 + 1.0)
+    _location = location
     _gender = random.randrange(0, 1 + 1)
     _age = random.randrange(0, 4 + 1)
 

@@ -1,10 +1,12 @@
 #!/usr/bin/python
 
-import goose.entity
-import goose.clan
+import goose.entity as entity
+import goose.clan as clan
 
 import sys
 import os
+import json
+import cPickle as pickle
 
 WELCOMEMSG = '''
  ____ ____ ____ ____ ____
@@ -24,15 +26,15 @@ WELCOMEMSG = '''
 def createClan(size):
     print 'Use random data? (y/n)'
     if str(raw_input('---> ')) == 'y':
-        geesearray = goose.clan.generateRandomClan(size)
+        geesearray = clan.generateRandomClan(size)
         print 'Finished generating clan.'
-        return goose.clan.Clan(geesearray)
+        return clan.Clan(geesearray)
     else:
         geesearray = []
         for gooseCount in range(size):
             geesearray.append(harvestGoose())
         print 'Finished generating clan.'
-        return goose.clan.Clan(geesearray)
+        return clan.Clan(geesearray)
 
 
 def createGeese(count):
@@ -40,7 +42,7 @@ def createGeese(count):
     geesearray = []
     if str(raw_input('---> ')) == 'y':
         for gooseCount in range(count):
-            geesearray.append(goose.entity.generateRandomGoose())
+            geesearray.append(entity.generateRandomGoose())
         return geesearray
         print 'Finished generating ' + count + ' geese.'
     else:
@@ -51,7 +53,7 @@ def createGeese(count):
 
 
 def createGoose():
-    return goose.entity.Goose(str(raw_input('name ---> ')), int(raw_input('age (d) ---> ')), int(raw_input('span (d) ---> ')), int(raw_input('health ---> ')), int(raw_input('hunger ---> ')), goose.entity.Location(int(raw_input('X: ')), int(raw_input('Y: '))), int(raw_input('gender ---> ')))
+    return entity.Goose(str(raw_input('name ---> ')), int(raw_input('age (d) ---> ')), int(raw_input('span (d) ---> ')), int(raw_input('health ---> ')), int(raw_input('hunger ---> ')), entity.Location(int(raw_input('X: ')), int(raw_input('Y: '))), int(raw_input('gender ---> ')))
 
 
 def exit():
@@ -64,6 +66,15 @@ def clear():
     for i in range(100):
         print
     return
+
+
+def export(obj, file):
+    if mode == 0:
+        pickle.dump(obj, open(file, 'wb'))
+    elif mode == 1:
+        print 'We have no support for JSON, woops!'
+    else:
+        print 'Wrong mode. Try 0 (pkl) or 1 (json).'
 
 
 if __name__ == '__main__':
