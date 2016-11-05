@@ -40,6 +40,17 @@ WELCOMEMSG = '''
 '''
 
 
+def printArray(geesearray):
+    for goose in geesearray:
+        print goose
+
+
+def getGooseFromHash(geesearray, _hashid):
+    for goose in geesearray:
+        if goose.hashid == str(_hashid):
+            return goose
+
+
 def createClan(size, x, y):
     print 'Use random data? (y/n)'
     if str(raw_input('---> ')) == 'y':
