@@ -1,6 +1,7 @@
 import hashlib
 import os
 import sys
+import random
 
 
 class Location:
@@ -10,6 +11,10 @@ class Location:
     def __init__(self, _x, _y):
         self.x = _x
         self.y = _y
+
+    def random(self):
+        self.x = random.randrange(-180, 180)
+        self.y = random.randrange(-90, 90)
 
 
 class Goose:
