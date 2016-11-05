@@ -2,7 +2,7 @@ from crate import client
 
 
 class Database:
-    def __init__(crateServer):
+    def __init__(self, crateServer):
         self.server = crateServer
 
     '''
