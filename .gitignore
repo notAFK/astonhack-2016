@@ -3,3 +3,7 @@
 *.log
 *.tar
 *.7z
+
+# PYTHON
+*.pyc
+*.pkl
