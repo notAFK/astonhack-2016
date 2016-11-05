@@ -2,6 +2,7 @@ import hashlib
 import os
 import sys
 import random
+import math
 
 
 GLOBALIDCOUNT = 0
@@ -30,7 +31,7 @@ class Goose:
     __GENDER = {0: 'female', 1: 'male', 2: 'apache attack helicopter'}
 
     def __init__(self, _name, _age, _lifespan,
-                 _health, _hunger, _location, _gender):
+                 _health, _hunger, _location, _gender, _range):
 
         global GLOBALIDCOUNT
         self.id = GLOBALIDCOUNT
@@ -45,6 +46,9 @@ class Goose:
         self.location = _location
         self.gender = _gender
         self.age = _age
+        self.isAlive = True
+        self.range = _range
+        self.migrateCounter = 0
 
     def __str__(self):
         return self.hashid
@@ -54,6 +58,22 @@ class Goose:
         if self.health <= 70.0:
             _decay += 40.0/self.health
         self.lifespan -= _decay
+        if self.lifespan <= 0:
+            self.die()
+
+    def die(self):
+        self.isAlive = False
+
+    def migrate(self, location):
+        distance = math.sqrt((self.x - location.x)**2 + (self.y - location.y)**2)
+        self.migrateCounter = distance/self.range
+        if migrateCounter == 0:
+            move(location)
+
+    def move(self, location):
+        distance = math.sqrt((self.x - location.x)**2 + (self.y - location.y)**2)
+        if distance <= self.range:
+            self.location = location
 
     def printAll(self):
         for key, value in self.__dict__.items():
@@ -83,5 +103,9 @@ def generateRandomClanGoose(location):
     _location = location
     _gender = random.randrange(0, 1 + 1)
     _age = random.randrange(0, 4 + 1)
+
+
+def killGoose(goose):
+    goose.isAlive = False
 
     return Goose(_name, _age, _lifespan, _health, _hunger, _location, _gender)
