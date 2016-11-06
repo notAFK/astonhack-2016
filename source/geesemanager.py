@@ -134,8 +134,6 @@ def update(geeseclan):
             goose.decayHealth()
             goose.feed()
 
-            goose.migrate(random.uniform(-45.0, 45.0), random.unfiorm(-45.0, 45.0))
-
             if random.randrange(0, 1000) < 5:
                 goose.mate(geeseclan)
 
