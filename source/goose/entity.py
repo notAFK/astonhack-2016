@@ -130,7 +130,7 @@ def generateRandomGoose():
     _health = random.uniform(90.0, 100.0 + 1.0)
     _location = Location().random()
     _gender = random.randrange(0, 1 + 1)
-    _age = random.uniform(200.0, 1000.0 + 1.0)
+    _age = random.randrange(200, 1000 + 1)
 
     return Goose(_name, _age, _lifespan, _health, _hunger, _location, _gender)
 
@@ -142,7 +142,7 @@ def generateRandomClanGoose(location):
     _health = random.uniform(90.0, 100.0 + 1.0)
     _location = location
     _gender = random.randrange(0, 1 + 1)
-    _age = random.uniform(200.0, 1000.0 + 1.0)
+    _age = random.randrange(200, 1000 + 1)
 
     return Goose(_name, _age, _lifespan, _health, _hunger, _location, _gender)
 

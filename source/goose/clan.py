@@ -46,6 +46,7 @@ class Clan:
     def addEggs(self, count):
         for c in range(count):
             self.eggs.append(Egg())
+        print str(count) + ' eggs were added to ' + str(self.hashid)
 
     def addGoose(self, goose):
         self.geese.append(goose)
