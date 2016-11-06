@@ -37,6 +37,12 @@ class Clan:
             goose.printAll()
             print
 
+    def printAlive(self):
+        for goose in self.geese:
+            if goose.isAlive:
+                goose.printAll()
+                print
+
     def addEggs(self, count):
         for c in range(count):
             self.eggs.append(Egg())

@@ -60,9 +60,29 @@ class Goose:
             _decay += 40.0/self.health
         self.lifespan -= _decay
         if self.lifespan <= 0:
+            print self.__str__() + ' reached his lifespan.'
             self.die()
 
+    def decayHunger(self):
+        _decay = 3.0
+        if self.hunger <= 30:
+            _decay += 1.0
+        self.hunger -= _decay
+        if self.hunger <= 0:
+            print self.__str__() + ' starved.'
+            self.die()
+
+    def decayHealth(self):
+        _decay = 0.01
+        if self.hunger <= 30:
+            _decay += 1.0
+            _decay += (30 - self.hunger)/10
+            if self.health <= 0:
+                print self.__str__() + ' had bad health.'
+                self.die()
+
     def die(self):
+        print self.__str__() + ' died.'
         self.isAlive = False
 
     def migrate(self, x, y):
@@ -79,7 +99,7 @@ class Goose:
     def move(self, x, y):
         distance = math.sqrt((self.location.x - x)**2 + (self.location.y - y)**2)
         if distance <= self.range:
-            print self + ' moved from ' + self.location + ' to ' + Location(x, y)
+            print self.__str__() + ' moved from ' + self.location + ' to ' + Location(x, y)
             self.location = Location(x, y)
 
     def printAll(self):
@@ -99,7 +119,7 @@ class Goose:
         for goose in geeseclan:
             if goose.gender != self.gender:
                 if goose.age >= 720:
-                    print self + ' started reproduction with ' + goose
+                    print self.__str__() + ' started reproduction with ' + goose
                     geeseclan.addEggs(random.randrange(2, 10))
 
 

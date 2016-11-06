@@ -113,15 +113,19 @@ def export(obj, file):
         print 'Wrong mode. Try 0 (pkl) or 1 (json).'
 
 
-def start():
+def start(geeseclan):
     daystorun = int(raw_input('simulation time (d) ---> '))
     for d in range(daystorun):
         print '#### #### ' + str(d) + ' #### ####'
-        update()
+        update(geeseclan)
 
 
-def update():
-    pass
+def update(geeseclan):
+    for goose in geeseclan.geese:
+        if goose.isAlive:
+            goose.decayLifespan()
+            goose.decayHunger()
+            goose.decayHealth()
 
 
 if __name__ == '__main__':
