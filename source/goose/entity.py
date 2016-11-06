@@ -51,6 +51,7 @@ class Goose:
         self.range = _range
         self.migrateCounter = 0
         self.saved = False
+        self.matecooldown = 0
 
     def __str__(self):
         return self.hashid
@@ -84,6 +85,7 @@ class Goose:
 
     def decayAge(self):
         self.age += 1
+        self.matecooldown -= 1
         if self.age > Goose.__MAXLIFE:
             print self.__str__() + ' has reached the golden age.'
             self.die()
@@ -123,12 +125,14 @@ class Goose:
         pass
 
     def mate(self, geeseclan):
-        for goose in geeseclan:
-            if goose.gender != self.gender:
-                if goose.age >= 720:
-                    print self.__str__() + ' started reproduction with ' + goose.__str__()
-                    geeseclan.addEggs(random.randrange(2, 10))
-                    return
+        if self.matecooldown <= 0:
+            for goose in geeseclan:
+                if goose.gender != self.gender:
+                    if goose.age >= 720:
+                        print self.__str__() + ' started reproduction with ' + goose.__str__()
+                        geeseclan.addEggs(random.randrange(2, 10))
+                        self.matecooldown = 180
+                        return
 
 
 def generateRandomGoose():
