@@ -35,39 +35,56 @@ class Database:
         cursor = connection.cursor()
         for bird in geeseArray:
 	    if bird.saved:
-		cursor.execute("UPDATE geese SET HASHID = '" + bird.hashid +
-		"' , LIFESPAN = " + bird.lifespan +
-		", AGE = " + bird.age +
-		", HUNGER = " + bird.hunger +
-		", LOCATION_X = " + bird.location.x +
-		", LOCATION_Y = " + bird.location.y +
-                ", IS_ALIVE = " + bird.isAlive +
-		", MIGRATION = " + bird.migrateCounter +
-		", RANGE = " + bird.range +
-		", HEALTH = " + bird.health +
-		", GENDER = " + bird.gender +
-		"WHERE ID = " + bird.id)
+		command = "UPDATE geese SET HASHID = '" + bird.hashid 
+		command += "' , LIFESPAN = " + str(bird.lifespan)
+		command += ", AGE = " + str(bird.age)
+		command += ", HUNGER = " + str(bird.hunger)
+		command += ", LOCATION_X = " + str(bird.location.x)
+		command += ", LOCATION_Y = " + str(bird.location.y)
+                command += ", IS_ALIVE = " + str(bird.isAlive)
+		command += ", MIGRATION = " + str(bird.migrateCounter)
+		command += ", RANGE = " + str(bird.range)
+		command += ", HEALTH = " + str(bird.health)
+		command += ", GENDER = " + str(bird.gender) + " "
+		command += "WHERE ID = " + str(bird.id)
+		cursor.execute(command)
 	    else:
 		command = "INSERT INTO geese (ID, HASHID, LIFESPAN, AGE, HUNGER"
-		
-		cursor.execute("""
-	        INSERT INTO geese (ID, HASHID, LIFESPAN, AGE, HUNGER""" + """
-		, LOCATION_X, LOCATION_Y, HEALTH, GENDER, """ + """ 
-		IS_ALIVE, RANGE, MIGRATION) 
-		VALUES( """ + bird.id + ", '" + bird.hashid + "', " +
-		bird.lifespan + ", " + bird.age + ", " + bird.hunger + ", " +
-		bird.location.x + ", " + bird.location.y + ", " + bird.health + 
-		bird.health + ", " + bird.gender + ", " + bird.isAlive + 
-		", " + bird.migrateCounter + ")")
-		bird.saved = true
+		command += ", LOCATION_X, LOCATION_Y, HEALTH, GENDER, "
+		command += "IS_ALIVE, RANGE, MIGRATION) "
+		command += "VALUES( " + str(bird.id) + ", '" + bird.hashid + "', "
+		command += str(bird.lifespan) + ", "
+		command += str(bird.age) + ", " + str(bird.hunger) + ", "
+		command += str(bird.location.x) + ", "
+		command += str(bird.location.y) +  ", " + str(bird.health)  + ", "
+		command += str(bird.gender) + ", " + str(bird.isAlive)  + ", "
+		command += str(bird.range) + ", " + str(bird.migrateCounter) + ")"
+		cursor.execute(command)
+		result = cursor.fetchone()
+		bird.saved = True
 
     '''
     Load function for geese table
-    Accesses crate on ip provided and loads it into _geeseArray
+    Accesses crate on ip provided and loads it into geeseArray
+    Empties the presented array and populates it with geese data
     '''
-    def Load(self, _geeseArray):
-        connection = client.connect(crateServer)
+    def FetchGeese(self):
+        connection = client.connect(self.server)
+        cursor = connection.cursor()
+        cursor.execute("SELECT * FROM geese limit 1000000")
+	result = cursor.fetchall()
+	return result
+
+    def FetchLocations(self):
+	connection = client.connect(self.server)
+        cursor = connection.cursor()
+        cursor.execute("SELECT LOCATION_X, LOCATION_Y FROM geese limit 1000000")
+	result = cursor.fetchall()
+	return result
+	
+    def Delete(self):
+	connection = client.connect(self.server)
         cursor = connection.cursor()
         cursor.execute("""
-        SELECT * FROM geese
+        DROP TABLE geese
         """);
