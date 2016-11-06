@@ -61,6 +61,10 @@ class Clan:
     def lenAlive(self):
         return len([i for i in self.geese if i.isAlive])
 
+    def killAll(self):
+        for goose in self.geese:
+            entity.killGoose(goose)
+
 
 def generateRandomClan(_count, x, y):
     _geesearray = []

@@ -160,6 +160,7 @@ def generateRandomClanGoose(location):
 
 
 def killGoose(goose):
-    goose.isAlive = False
+    print goose.__str__() + ' has been terminated.'
+    goose.die()
 
-    return Goose(_name, _age, _lifespan, _health, _hunger, _location, _gender)
+    # return Goose(_name, _age, _lifespan, _health, _hunger, _location, _gender)
