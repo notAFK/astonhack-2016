@@ -68,7 +68,7 @@ class Clan:
 
 def generateRandomClan(_count, x, y):
     _geesearray = []
-    _location = Location(x + random.uniform(-2.0, 2.0), y+ random.uniform(-2.0, 2.0))
+    _location = Location(x, y)
     for count in range(_count):
         _geesearray.append(entity.generateRandomClanGoose(_location))
     return _geesearray
