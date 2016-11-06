@@ -56,6 +56,9 @@ def getGooseFromHash(geesearray, hashid):
         if str(goose.hashid) == str(hashid):
             return goose
 
+def createDistributedClan(size, x, y, dist):
+    return clan.Clan(clan.generateRandomDistributedClan(size, x, y, dist))
+
 
 def createClan(size, x, y):
     print 'Use random data? (y/n)'
@@ -140,8 +143,6 @@ def update(geeseclan):
             goose.decayHunger()
             goose.decayHealth()
             goose.feed()
-
-            goose.migrate(random.uniform(-45.0, 45.0), random.unfiorm(-45.0, 45.0))
 
             if random.randrange(0, 1000) < 5:
                 goose.mate(geeseclan)

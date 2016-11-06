@@ -72,3 +72,10 @@ def generateRandomClan(_count, x, y):
     for count in range(_count):
         _geesearray.append(entity.generateRandomClanGoose(_location))
     return _geesearray
+
+def generateRandomDistributedClan(_count, x, y, dist):
+    _geesearray = []
+    for count in range(_count):
+        _location = Location(x + random.uniform(-dist, dist) * 2, y + random.uniform(-dist, dist))
+        _geesearray.append(entity.generateRandomClanGoose(_location))
+    return _geesearray
