@@ -127,7 +127,8 @@ def start(geeseclan):
 
 
 def update(geeseclan):
-    global dbs.Save(geeseclan.geese)
+    global dbs
+    dbs.Save(geeseclan.geese)
     for goose in geeseclan.geese:
         if goose.isAlive:
             goose.decayAge()
@@ -151,11 +152,12 @@ def update(geeseclan):
 
 
 if __name__ == '__main__':
+    global dbs
     IP = str(raw_input('ip: '))
     PORT = str(raw_input('port: '))
-    global dbs = Database(str(IP) + ':' + str(PORT))
-    global dbs.Delete()
-    global dbs.Create()
+    dbs = Database(str(IP) + ':' + str(PORT))
+    dbs.Delete()
+    dbs.Create()
     print WELCOMEMSG
     while(True):
         exec(str(raw_input('>_ ')))
