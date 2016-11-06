@@ -96,7 +96,7 @@ def createClanGoose(x, y):
 def exit():
     print '*quack*'
     print 'The geese will find you!'
-    break
+    sys.exit(1)
 
 
 def clear():
