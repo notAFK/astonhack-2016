@@ -3,11 +3,16 @@
 import goose.entity as entity
 import goose.clan as clan
 
+from db.database import Database
+
 import sys
 import os
 import json
 import random
 import cPickle as pickle
+
+
+dbs = 'null'
 
 WELCOMEMSG = '''
 
@@ -122,6 +127,7 @@ def start(geeseclan):
 
 
 def update(geeseclan):
+    global dbs.Save(geeseclan.geese)
     for goose in geeseclan.geese:
         if goose.isAlive:
             goose.decayAge()
@@ -145,6 +151,11 @@ def update(geeseclan):
 
 
 if __name__ == '__main__':
+    IP = str(raw_input('ip: '))
+    PORT = str(raw_input('port: '))
+    global dbs = Database(str(IP) + ':' + str(PORT))
+    global dbs.Delete()
+    global dbs.Create()
     print WELCOMEMSG
     while(True):
         exec(str(raw_input('>_ ')))

@@ -1,1 +1,2 @@
 googlemaps==2.4.4
+crate==0.16.4
