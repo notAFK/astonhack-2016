@@ -6,6 +6,7 @@ import random
 import entity
 from entity import Location
 from entity import Goose
+from egg import Egg
 
 
 class Clan:
@@ -15,6 +16,7 @@ class Clan:
     def __init__(self, _geesearray):
         self.geese = _geesearray
         self.hashid = hashlib.sha256(os.urandom(32)).hexdigest()[0:8]
+        self.eggs = []
 
     def __str__(self):
         _string = 'CLAN:' + self.hashid + '\n'
@@ -34,6 +36,19 @@ class Clan:
         for goose in self.geese:
             goose.printAll()
             print
+
+    def addEggs(self, count):
+        for c in range(count):
+            self.eggs.append(Egg())
+
+    def addGoose(self, goose):
+        self.geese.append(goose)
+
+    def ageAllEggs(self):
+        for egg in self.eggs:
+            egg.days -= 1
+            if egg.days == 0:
+                self.addGoose(Goose('newborn', 0, random.uniform(4000.0, 8000.0), 100.0, 100.0, self.geese[0].location, random.randrange(0, 2)))
 
 
 def generateRandomClan(_count, x, y):

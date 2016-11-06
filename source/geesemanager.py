@@ -45,9 +45,9 @@ def printArray(geesearray):
         print goose
 
 
-def getGooseFromHash(geesearray, _hashid):
+def getGooseFromHash(geesearray, hashid):
     for goose in geesearray:
-        if goose.hashid == str(_hashid):
+        if str(goose.hashid) == str(hashid):
             return goose
 
 

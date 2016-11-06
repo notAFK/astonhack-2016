@@ -88,6 +88,18 @@ class Goose:
             else:
                 print key, ':', Goose.__GENDER[value]
 
+    def feed(self):
+        # check if there is food around.
+        # if there is add food
+        # else dont!
+        pass
+
+    def mate(self, geeseclan):
+        for goose in geeseclan:
+            if goose.gender != self.gender:
+                if goose.age >= 720:
+                    geeseclan.addEggs(random.randrange(2, 10))
+
 
 def generateRandomGoose():
     _name = 'goose'
