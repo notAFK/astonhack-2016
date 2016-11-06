@@ -13,8 +13,8 @@ ASTON HACK 2016
 Fragile/Swarming Geese Simulator, is a Python program that "simulates" the
 behaviour of geese (a common theme around Birmingham). The main idea was to
 create the activity history of groups and individual geese and then plot their
-actions on a map (using Google Maps API). The history is to be stored in a
-database (SQL, Crate.io).
+actions on a map (using **Google Maps API**). The history is stored using the **crate.io**
+database.
 
 ### How to run the program.
 ```python
@@ -80,3 +80,20 @@ range ---> 55
 # Then hell breaks loose!!!
 # Some geese die, some are born, overall they win!
 ```
+
+### More
+For more information on what the program can do, look at the functions defined inside *source/geesemanager.py*
+
+---
+# crate.io
+The program tries to connect to a crate.io database, so make sure you have one running
+```shell
+crate/crate # Linux/Mac
+```
+and when asked provide the ip and port:
+```python
+# Should work on most machines!
+ip: localhost
+port: 4200
+```
+After this, Python connects to the database and stores data about the geese! AMAZING!
