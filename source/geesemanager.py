@@ -66,7 +66,7 @@ def createClan(size, x, y):
     else:
         geesearray = []
         for gooseCount in range(size):
-            geesearray.append(createClanGoose(x, y))
+            geesearray.append(createClanGoose(x + random.uniform(-2.0, 2.0), y + random.uniform(-2.0, 2.0)))
         print 'Finished generating clan.'
         return clan.Clan(geesearray)
 
@@ -126,10 +126,10 @@ def start(geeseclan):
         update(geeseclan)
 
 
-def update(geeseclan):
+def update(geesearray):
     global dbs
-    dbs.Save(geeseclan.geese)
-    for goose in geeseclan.geese:
+    dbs.Save(geesearray)
+    for goose in geesearray:
         if goose.isAlive:
             goose.decayAge()
             goose.decayLifespan()
@@ -137,7 +137,7 @@ def update(geeseclan):
             goose.decayHealth()
             goose.feed()
 
-            goose.migrate(0, 0)
+            #goose.migrate(0, 0)
 
             if random.randrange(0, 1000) < 5:
                 goose.mate(geeseclan)
@@ -148,7 +148,7 @@ def update(geeseclan):
         if random.randrange(0, 1000) < 3:
             goose.die()
 
-    geeseclan.ageAllEggs()
+    #geeseclan.ageAllEggs()
 
 
 if __name__ == '__main__':
