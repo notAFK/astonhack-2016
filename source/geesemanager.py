@@ -113,6 +113,17 @@ def export(obj, file):
         print 'Wrong mode. Try 0 (pkl) or 1 (json).'
 
 
+def start():
+    daystorun = int(raw_input('simulation time (d) ---> '))
+    for d in range(daystorun):
+        print '#### #### ' + str(d) + ' #### ####'
+        update()
+
+
+def update():
+    pass
+
+
 if __name__ == '__main__':
     print WELCOMEMSG
     while(True):
