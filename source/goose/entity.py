@@ -129,10 +129,11 @@ class Goose:
             for goose in geeseclan:
                 if goose.gender != self.gender:
                     if goose.age >= 720:
-                        print self.__str__() + ' started reproduction with ' + goose.__str__()
-                        geeseclan.addEggs(random.randrange(2, 10))
-                        self.matecooldown = 180
-                        return
+                        if goose.matecooldown <= 0:
+                            print self.__str__() + ' started reproduction with ' + goose.__str__()
+                            geeseclan.addEggs(random.randrange(2, 10))
+                            self.matecooldown = 180
+                            return
 
 
 def generateRandomGoose():
