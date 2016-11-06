@@ -104,16 +104,20 @@ class Goose:
         if self.migrateCounter == 0:
             self.migrateCounter = int(distance/self.range)
         if self.migrateCounter == 0:
-            self.move(x, y)
+            self.location.x = x
+            self.location.y = y
+
         if self.migrateCounter > 0:
             self.migrateCounter -= 1
+            print 'Moving closer to ' + str(x) + ' ' + str(y)
             if self.migrateCounter == 0:
-                self.move(x, y)
+                self.location.x = x
+                self.location.y = y
 
     def move(self, x, y):
         distance = math.sqrt((self.location.x - x)**2 + (self.location.y - y)**2)
         if distance <= self.range:
-            print self.__str__() + ' moved from ' + self.location + ' to ' + Location(x, y)
+            print self.__str__() + ' moved.'
             self.location = Location(x, y)
 
     def printAll(self):
