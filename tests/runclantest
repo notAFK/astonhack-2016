@@ -1,0 +1,9 @@
+#!/bin/bash
+../source/geesemanager.py << EOF
+c = createClan(20,0,0)
+y
+start(c)
+100
+c.printAlive()
+print c.lenAlive()
+exit()
