@@ -128,9 +128,16 @@ def update(geeseclan):
             goose.decayLifespan()
             goose.decayHunger()
             goose.decayHealth()
+            goose.feed()
 
             if random.randrange(0, 1000) < 5:
                 goose.mate(geeseclan)
+
+        if random.randrange(0, 200) < 5:
+            goose.health -= 5
+
+        if random.randrange(0, 1000) < 3:
+            goose.die()
 
     geeseclan.ageAllEggs()
 

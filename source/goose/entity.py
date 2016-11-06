@@ -58,12 +58,17 @@ class Goose:
 
     def decayLifespan(self):
         _decay = 1.0
+        if self.lifespan <= 0.0:
+            print self.__str__() + ' reached his lifespan.'
+            self.die()
+            return
         if self.health <= 70.0:
             _decay += 40.0/self.health
         self.lifespan -= _decay
-        if self.lifespan <= 0:
+        if self.lifespan <= 0.0:
             print self.__str__() + ' reached his lifespan.'
             self.die()
+            return
 
     def decayHunger(self):
         _decay = 3.0
@@ -119,9 +124,9 @@ class Goose:
                 print key, ':', Goose.__GENDER[value]
 
     def feed(self):
-        # check if there is food around.
-        # if there is add food
-        # else dont!
+        self.hunger += random.uniform(0.0, 5.0)
+        if self.hunger >= 100.0:
+            self.hunger = 100.0
         pass
 
     def mate(self, geeseclan):
