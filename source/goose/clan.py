@@ -56,7 +56,10 @@ class Clan:
             egg.days -= 1
             if egg.days == 0:
                 self.addGoose(Goose('newborn', 0, random.uniform(4000.0, 8000.0), 100.0, 100.0, self.geese[0].location, random.randrange(0, 2)))
-                print 'EGG HATCHED: ' + self.geese[len(self.geese)-1]
+                print 'EGG HATCHED: ' + self.geese[len(self.geese)-1].__str__()
+
+    def lenAlive(self):
+        return len([i for i in self.geese if i.isAlive])
 
 
 def generateRandomClan(_count, x, y):

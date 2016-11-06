@@ -6,6 +6,7 @@ import goose.clan as clan
 import sys
 import os
 import json
+import random
 import cPickle as pickle
 
 WELCOMEMSG = '''
@@ -123,9 +124,15 @@ def start(geeseclan):
 def update(geeseclan):
     for goose in geeseclan.geese:
         if goose.isAlive:
+            goose.decayAge()
             goose.decayLifespan()
             goose.decayHunger()
             goose.decayHealth()
+
+            if random.randrange(0, 100) == 0:
+                goose.mate(geeseclan)
+
+    geeseclan.ageAllEggs()
 
 
 if __name__ == '__main__':

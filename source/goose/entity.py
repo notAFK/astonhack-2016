@@ -29,6 +29,7 @@ class Goose:
     __doc__ = ''' Class that stores the goose essentials. '''
 
     __GENDER = {0: 'female', 1: 'male', 2: 'apache attack helicopter'}
+    __MAXLIFE = 8000
 
     def __init__(self, _name, _age, _lifespan,
                  _health, _hunger, _location, _gender, _range=12):
@@ -81,6 +82,12 @@ class Goose:
                 print self.__str__() + ' had bad health.'
                 self.die()
 
+    def decayAge(self):
+        self.age += 1
+        if self.age > Goose.__MAXLIFE:
+            print self.__str__() + ' has reached the golden age.'
+            self.die()
+
     def die(self):
         print self.__str__() + ' died.'
         self.isAlive = False
@@ -119,8 +126,9 @@ class Goose:
         for goose in geeseclan:
             if goose.gender != self.gender:
                 if goose.age >= 720:
-                    print self.__str__() + ' started reproduction with ' + goose
+                    print self.__str__() + ' started reproduction with ' + goose.__str__()
                     geeseclan.addEggs(random.randrange(2, 10))
+                    return
 
 
 def generateRandomGoose():
