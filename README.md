@@ -2,6 +2,9 @@ ASTON HACK 2016
 ===
 ###### Geese themed hackathon!
 
+[![npm license](https://img.shields.io/npm/l/awesome-badges.svg)](https://www.npmjs.org/package/awesome-badges)
+
+
 ###### Travis CI Status
 [![Build Status](https://travis-ci.com/thee-engineer/astonhack-2016.svg?token=ySNrvJx6Lqs7r3y3HqKN&branch=master)](https://travis-ci.com/thee-engineer/astonhack-2016)
 
