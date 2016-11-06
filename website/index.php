@@ -47,9 +47,8 @@ function printMarkers()
     </style>
   </head>
   <body>
-    <h3>My Google Maps Demo</h3>
+    <h3>Fragile swarming geese</h3>
     <div id="map"></div>
-    <div><?php echo'Testing geeses'?></div>
     <?php printMap() ?>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCyT8A7_o7yXpZB7AI6uc4QwYR0bco2wTc&callback=initMap">
