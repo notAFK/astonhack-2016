@@ -8,6 +8,7 @@ ASTON HACK 2016
 ###### Travis CI Status
 [![Build Status](https://travis-ci.com/thee-engineer/astonhack-2016.svg?token=ySNrvJx6Lqs7r3y3HqKN&branch=master)](https://travis-ci.com/thee-engineer/astonhack-2016)
 
+![Goose](https://astonhack.co.uk/images/ah-goose.png )
 
 # Description
 Fragile/Swarming Geese Simulator, is a Python program that "simulates" the
