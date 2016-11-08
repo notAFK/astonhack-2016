@@ -4,6 +4,7 @@ ASTON HACK 2016
 
 [![npm license](https://img.shields.io/npm/l/awesome-badges.svg)](https://github.com/thee-engineer/astonhack-2016)
 ![AstonHack2016 Status](https://img.shields.io/badge/astonhack2016-winner-orange.svg)
+![Docker IMG](https://img.shields.io/badge/docker-image-blue.svg)
 
 ###### Travis CI Status
 [![Build Status](https://travis-ci.com/thee-engineer/astonhack-2016.svg?token=ySNrvJx6Lqs7r3y3HqKN&branch=master)](https://travis-ci.com/thee-engineer/astonhack-2016)
