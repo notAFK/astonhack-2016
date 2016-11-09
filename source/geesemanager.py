@@ -161,8 +161,8 @@ if __name__ == '__main__':
     IP = str(raw_input('ip: '))
     PORT = str(raw_input('port: '))
     dbs = Database(str(IP) + ':' + str(PORT))
-    dbs.Delete()
     dbs.Create()
     print WELCOMEMSG
     while(True):
         exec(str(raw_input('#: ')))
+    dbs.Delete()
