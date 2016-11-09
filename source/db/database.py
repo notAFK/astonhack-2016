@@ -23,34 +23,34 @@ class Database:
         connection = client.connect(self.server)
         cursor = connection.cursor()
         for bird in geeseArray:
-    	    if bird.saved:
-        		command = "UPDATE geese SET HASHID = \'" + bird.hashid
-        		command += "' , LIFESPAN = " + str(bird.lifespan)
-        		command += ", AGE = " + str(bird.age)
-        		command += ", HUNGER = " + str(bird.hunger)
-        		command += ", LOCATION_X = " + str(bird.location.x)
-        		command += ", LOCATION_Y = " + str(bird.location.y)
+            if bird.saved:
+                command = "UPDATE geese SET HASHID = \'" + bird.hashid
+                command += "' , LIFESPAN = " + str(bird.lifespan)
+                command += ", AGE = " + str(bird.age)
+                command += ", HUNGER = " + str(bird.hunger)
+                command += ", LOCATION_X = " + str(bird.location.x)
+                command += ", LOCATION_Y = " + str(bird.location.y)
                 command += ", IS_ALIVE = " + str(bird.isAlive)
-        		command += ", MIGRATION = " + str(bird.migrateCounter)
-        		command += ", RANGE = " + str(bird.range)
-        		command += ", HEALTH = " + str(bird.health)
-        		command += ", GENDER = " + str(bird.gender) + " "
-        		command += "WHERE ID = " + str(bird.id)
-        		cursor.execute(command)
-    	    else:
-        		command = "INSERT INTO geese (ID, HASHID, LIFESPAN, AGE, HUNGER"
-        		command += ", LOCATION_X, LOCATION_Y, HEALTH, GENDER, "
-        		command += "IS_ALIVE, RANGE, MIGRATION) "
-        		command += "VALUES( " + str(bird.id) + ", '" + bird.hashid + "', "
-        		command += str(bird.lifespan) + ", "
-        		command += str(bird.age) + ", " + str(bird.hunger) + ", "
-        		command += str(bird.location.x) + ", "
-        		command += str(bird.location.y) +  ", " + str(bird.health)  + ", "
-        		command += str(bird.gender) + ", " + str(bird.isAlive)  + ", "
-        		command += str(bird.range) + ", " + str(bird.migrateCounter) + ")"
-        		cursor.execute(command)
-        		result = cursor.fetchone()
-        		bird.saved = True
+                command += ", MIGRATION = " + str(bird.migrateCounter)
+                command += ", RANGE = " + str(bird.range)
+                command += ", HEALTH = " + str(bird.health)
+                command += ", GENDER = " + str(bird.gender) + " "
+                command += "WHERE ID = " + str(bird.id)
+                cursor.execute(command)
+            else:
+                command = "INSERT INTO geese (ID, HASHID, LIFESPAN, AGE, HUNGER"
+                command += ", LOCATION_X, LOCATION_Y, HEALTH, GENDER, "
+                command += "IS_ALIVE, RANGE, MIGRATION) "
+                command += "VALUES( " + str(bird.id) + ", '" + bird.hashid + "', "
+                command += str(bird.lifespan) + ", "
+                command += str(bird.age) + ", " + str(bird.hunger) + ", "
+                command += str(bird.location.x) + ", "
+                command += str(bird.location.y) + ", " + str(bird.health) + ", "
+                command += str(bird.gender) + ", " + str(bird.isAlive) + ", "
+                command += str(bird.range) + ", " + str(bird.migrateCounter) + ")"
+                cursor.execute(command)
+                result = cursor.fetchone()
+                bird.saved = True
 
     '''
     Load function for geese table
@@ -61,17 +61,17 @@ class Database:
         connection = client.connect(self.server)
         cursor = connection.cursor()
         cursor.execute("SELECT * FROM geese limit 1000000")
-	result = cursor.fetchall()
-	return result
+        result = cursor.fetchall()
+        return result
 
     def FetchLocations(self):
-	connection = client.connect(self.server)
+        connection = client.connect(self.server)
         cursor = connection.cursor()
         cursor.execute("SELECT LOCATION_X, LOCATION_Y FROM geese limit 1000000")
-	result = cursor.fetchall()
-	return result
+        result = cursor.fetchall()
+        return result
 
     def Delete(self):
-	connection = client.connect(self.server)
-    cursor = connection.cursor()
-    cursor.execute("DROP TABLE geese")
+        connection = client.connect(self.server)
+        cursor = connection.cursor()
+        cursor.execute("DROP TABLE geese")
