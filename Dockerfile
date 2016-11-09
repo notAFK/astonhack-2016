@@ -1,6 +1,6 @@
 # Get ARCH LINUX
 FROM crate:latest
-MAINTAINER Alexandru-Paul Copil, copil.alexander@gmail.com
+MAINTAINER Alexandru-Paul Copil <copil.alexander@gmail.com>
 
 # Get project files.
 COPY . /fwgsim

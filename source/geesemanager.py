@@ -56,6 +56,7 @@ def getGooseFromHash(geesearray, hashid):
         if str(goose.hashid) == str(hashid):
             return goose
 
+
 def createDistributedClan(size, x, y, dist):
     return clan.Clan(clan.generateRandomDistributedClan(size, x, y, dist))
 
@@ -157,7 +158,6 @@ def update(geeseclan):
 
 
 if __name__ == '__main__':
-    global dbs
     IP = str(raw_input('ip: '))
     PORT = str(raw_input('port: '))
     dbs = Database(str(IP) + ':' + str(PORT))
@@ -165,4 +165,4 @@ if __name__ == '__main__':
     dbs.Create()
     print WELCOMEMSG
     while(True):
-        exec(str(raw_input('>_ ')))
+        exec(str(raw_input('#: ')))

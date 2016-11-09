@@ -35,7 +35,7 @@ class Database:
         cursor = connection.cursor()
         for bird in geeseArray:
 	    if bird.saved:
-		command = "UPDATE geese SET HASHID = '" + bird.hashid 
+		command = "UPDATE geese SET HASHID = '" + bird.hashid
 		command += "' , LIFESPAN = " + str(bird.lifespan)
 		command += ", AGE = " + str(bird.age)
 		command += ", HUNGER = " + str(bird.hunger)
@@ -81,7 +81,7 @@ class Database:
         cursor.execute("SELECT LOCATION_X, LOCATION_Y FROM geese limit 1000000")
 	result = cursor.fetchall()
 	return result
-	
+
     def Delete(self):
 	connection = client.connect(self.server)
         cursor = connection.cursor()
