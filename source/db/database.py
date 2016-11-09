@@ -11,7 +11,7 @@ class Database:
     def Create(self):
         connection = client.connect(self.server)
         cursor = connection.cursor()
-        createstring = "CREATE TABLE geese(" + "ID int PRIMARY KEY," + "HASHID string," + "LIFESPAN float," + "AGE int," + "HUNGER float," + "LOCATION_X float," + "LOCATION_Y float," + "IS_ALIVE boolean," + "RANGE float," + "MIGRATION int," + "HEALTH int," + "GENDER int)"
+        createstring = "CREATE TABLE geese(ID int PRIMARY KEY, HASHID string, LIFESPAN float, AGE int, HUNGER float, LOCATION_X float, LOCATION_Y float, IS_ALIVE boolean, RANGE float, MIGRATION int, HEALTH int, GENDER int)"
 
         cursor.execute(createstring)
 
