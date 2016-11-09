@@ -99,3 +99,19 @@ ip: localhost
 port: 4200
 ```
 After this, Python connects to the database and stores data about the geese! AMAZING!
+
+# Docker Image
+###### https://hub.docker.com/r/theeengineer/geesesim/
+
+First of all make sure you have Docker installed. Then run:
+``` shell
+# Download the Fragile/Swarming Geese Simulator Image
+docker pull theeengineer/geesesim
+
+docker run -it -d -p 4200:4200 -p 4300:4300
+```
+You can visit
+```
+localhost:4200
+```
+on your host machine (or docker container) to view the crate.io database.
