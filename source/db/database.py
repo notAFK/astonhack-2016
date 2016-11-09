@@ -24,7 +24,7 @@ class Database:
         cursor = connection.cursor()
         for bird in geeseArray:
     	    if bird.saved:
-        		command = "UPDATE geese SET HASHID = '" + bird.hashid
+        		command = "UPDATE geese SET HASHID = \'" + bird.hashid
         		command += "' , LIFESPAN = " + str(bird.lifespan)
         		command += ", AGE = " + str(bird.age)
         		command += ", HUNGER = " + str(bird.hunger)
