@@ -8,13 +8,15 @@ COPY . /fwgsim
 # Update and Upgrade
 RUN apk update && apk upgrade
 
+# Install bash
+RUN apk add --update bash
+
 # Install and upgrade PiP
 RUN apk add --update py-pip
 RUN pip install --upgrade pip
 
 # Install crate, googlemaps for Python
-RUN pip install crate
-RUN pip install googlemaps
+RUN pip install -r /fwgsim/requirements.txt
 
 # Install crate database.
 RUN rm -rf /var/cache/apk/*
