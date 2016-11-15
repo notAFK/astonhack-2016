@@ -108,7 +108,9 @@ First of all make sure you have Docker installed. Then run:
 # Download the Fragile/Swarming Geese Simulator Image
 docker pull theeengineer/geesesim
 
-docker run -it -d -p 4200:4200 -p 4300:4300
+docker create -d -it -p 4200:4200 -p 4300:4300 --name fsgsim-node theeengineer/fwgsim
+docker run fsgsim-node
+docker exec -it fsgsim-node /bin/bash
 ```
 You can visit
 ```
